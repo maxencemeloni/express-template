@@ -1,0 +1,13 @@
+[
+    {
+        "name": "change the name ./pm2.json",
+        "merge_logs": true,
+        "error_file": "/var/log/pm2/yourProjectName-error.log",
+        "out_file": "/var/log/pm2/yourProjectName.out",
+        "pid_file": "/var/log/pm2/yourProjectName.pid",
+        "exec_mode": "fork",
+        "script"    : "node",
+        "interpreter": "none",
+        "args": "./bin/www"
+    }
+]

@@ -1,0 +1,14 @@
+{
+  "tmpPath": "/tmp/",
+  "uploadPath": "/public/uploads/",
+  "connections": {
+    "api-parsing": {
+      "ssl": true,
+      "host": "localhost",
+      "port": 3002
+    }
+  },
+  "log": {
+    "level": "debug"
+  }
+}
