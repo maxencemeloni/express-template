@@ -173,13 +173,17 @@ MyModel.delete();
 and custom methods if you add them in the model
 
 #### Usage examples :
-**Mysql.create**
 ```javascript
 const MyModel = require('../models/my-model.model');
+const {buildLimits} = require('../utils/controllers');
 let data = {title: 'title', ...};
 MyModel.create(data, (err, results) => {});
 
 let where = {id: 1};
+// offset and limits are set in the uri, 
+// ex: users/?limit=10
+// ex: users/?limit=10&offset=30
+let limits = buildLimits(req);
 MyModel.read(where, limits,(err, results) => {});
 
 let where = {id: 1};
@@ -189,7 +193,6 @@ MyModel.update(where, data, (err, results) => {});
 let where = {id: 1};
 MyModel.delete(where, (err, results) => {});
 ```
-
 
 ### async (branch "mysql-async")
 ./library/Mysql.js
