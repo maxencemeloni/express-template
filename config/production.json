@@ -1,1 +1,14 @@
-{}
+{
+  "tmpPath": "/tmp/",
+  "uploadPath": "/public/uploads/",
+  "services": {
+    "api-time": {
+      "ssl": false,
+      "host": "worldclockapi.com",
+      "port": null
+    }
+  },
+  "log": {
+    "level": "warning"
+  }
+}
