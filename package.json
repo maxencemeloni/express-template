@@ -30,6 +30,7 @@
     "http": "0.0.1-security",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
     "prompts": "^2.4.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0",
