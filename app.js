@@ -30,13 +30,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static('public'));
 
-logger.debug("Overriding 'Express' logger");
 app.use(morgan('tiny', {stream: logger.stream}));
 
 const indexRoutes = require('./routes/index.route.js');
-const usersRoutes = require('./routes/users.route.js');
+const timeRoutes = require('./routes/time.route.js');
 
 app.use('/', indexRoutes);
-app.use('/users', usersRoutes);
+app.use('/time', timeRoutes);
 
 module.exports = app;

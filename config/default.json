@@ -1,11 +1,11 @@
 {
   "tmpPath": "/tmp/",
   "uploadPath": "/public/uploads/",
-  "connections": {
-    "api-parsing": {
-      "ssl": true,
-      "host": "localhost",
-      "port": 3002
+  "services": {
+    "api-time": {
+      "ssl": false,
+      "host": "worldclockapi.com",
+      "port": null
     }
   },
   "log": {
