@@ -34,9 +34,12 @@ app.use(morgan('tiny', {stream: logger.stream}));
 
 const indexRoutes = require('./routes/index.route.js');
 const timeRoutes = require('./routes/time.route.js');
+const usersRoutes = require('./routes/users.route.js');
 
 app.use('/', indexRoutes);
 app.use('/time', timeRoutes);
+app.use('/users', usersRoutes);
+
 
 module.exports = app;
 
