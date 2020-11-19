@@ -4,11 +4,6 @@ This is a ready to Use **Express API**
 
 ### Global Features
 
-**- Security :** Default security middlesware are use (read more about security)
-**- Logging :**
-
-
-
 Branch  | Description | Status
 ------------- | ------------- | -------------
 main  | Full api without datasource | 
@@ -20,7 +15,42 @@ mongo-mysql  | Example with 2 differents datasources |
 mongo-socketio  | Datasource MongoDb and Socket.io | 
 mysql-socketio  | Datasource Mysql and Socket.io | 
 
+**- [PM2](https://pm2.keymetrics.io/) ready :** See ./pm2.json (pm2 has to be installed globaly 
 
+**- Security :** Default security middlewares are use (read more about security links: [1](https://itnext.io/make-security-on-your-nodejs-api-the-priority-50da8dc71d68) [2](https://nodesource.com/blog/nine-security-tips-to-keep-express-from-getting-pwned) [3](https://www.freecodecamp.org/news/express-js-security-tips/))
+
+**- Logging :** [Morgan](https://www.npmjs.com/package/morgan) + [Winston](https://www.npmjs.com/package/winston)
+
+**- Auto-loaded Routes**
+
+**- [JWT](https://www.npmjs.com/package/jsonwebtoken) authentification**
+
+**- Environment based configuration :** see [config](https://www.npmjs.com/package/config)
+
+**- UltraLight Mysql ORM**
+
+## Structure :
+- **bin/**:
+    -  **www**: http server (script to start)
+- **config/**: configuration folder, the file will be selected in relation to the NODE_ENV, the default file will be selected if the file related to NODE_ENV does not exists.
+    - **default.json**: Opposite than .env, config files will not contain sensitive data
+    - **production.json**
+    - **[test|development].json**
+- **controllers/**
+- **datasources/**: Connection to specific datasource
+- **library/** contains specific libraries
+- **logs/**
+- **middlewares/**
+- **models/**
+- **public/**
+    - **uploads/**
+- **routes/**
+- **services/**
+- **tmp/**
+- **utils/**
+- **app.js**
+- **.env.example**
+- **pm2.json**
 
 # Editor.md
 
