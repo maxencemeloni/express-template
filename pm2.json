@@ -6,8 +6,20 @@
         "out_file": "/var/log/pm2/yourProjectName.out",
         "pid_file": "/var/log/pm2/yourProjectName.pid",
         "exec_mode": "fork",
-        "script"    : "node",
+        "script": "./bin/www",
         "interpreter": "none",
-        "args": "./bin/www"
+        "args": "./bin/www",
+        "watch": [
+            "bin",
+            "controllers",
+            "routes",
+            "models",
+            "services",
+            "library",
+            "utils",
+            "config",
+            "app.js"
+        ],
+        "ignore_watch": []
     }
 ]

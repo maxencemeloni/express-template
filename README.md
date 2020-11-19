@@ -2,6 +2,8 @@
 
 This is a ready to Use **Express API**
 
+[Changelog](#changelog)
+
 ### Global Features
 
 Branch  | Description | Status
@@ -15,7 +17,7 @@ mongo-mysql  | Example with 2 differents datasources |
 mongo-socketio  | Datasource MongoDb and Socket.io | 
 mysql-socketio  | Datasource Mysql and Socket.io | 
 
-**- [PM2](https://pm2.keymetrics.io/) ready :** See ./pm2.json (pm2 has to be installed globaly 
+**- [PM2](https://pm2.keymetrics.io/) ready** 
 
 **- Security :** Default security middlewares are use (read more about security links: [1](https://itnext.io/make-security-on-your-nodejs-api-the-priority-50da8dc71d68) [2](https://nodesource.com/blog/nine-security-tips-to-keep-express-from-getting-pwned) [3](https://www.freecodecamp.org/news/express-js-security-tips/))
 
@@ -27,7 +29,7 @@ mysql-socketio  | Datasource Mysql and Socket.io |
 
 **- Environment based configuration :** see [config](https://www.npmjs.com/package/config)
 
-**- UltraLight Mysql ORM**
+**- UltraLight homemade Mysql ORM**
 
 ## Structure :
 - **bin/**:
@@ -39,18 +41,33 @@ mysql-socketio  | Datasource Mysql and Socket.io |
 - **controllers/**
 - **datasources/**: Connection to specific datasource
 - **library/** contains specific libraries
-- **logs/**
+- **logs/** 
 - **middlewares/**
 - **models/**
 - **public/**
     - **uploads/**
 - **routes/**
-- **services/**
+- **services/**: fetch data on external api/services
 - **tmp/**
-- **utils/**
+- **utils/**: specifics utils
 - **app.js**
-- **.env.example**
-- **pm2.json**
+- **.env.example**: dont forget to duplicate this (.env)) 
+- **pm2.json**: pm2 file to fill
+
+## Functionalities guide
+### pm2
+[PM2 documentation](https://pm2.keymetrics.io/)
+
+./pm2.json is the configuration file, you have to fill **name** and **logs names**
+
+pm2 logs need a folder in /var/logs
+`$ sudo mkdir /var/logs/pm2 && sudo chmod 777 /var/logs/pm2`
+
+pm2 has to be installed globally
+`$ sudo npm i -g pm2`
+
+To start
+`$ pm2 start pm2.json`
 
 # Editor.md
 
@@ -358,4 +375,6 @@ China-->Andrew: How are you?
 Andrew->>China: I am good thanks!
 ```
 
-###End
+-------------
+#Changelog
+<a name="changelog"></a>
