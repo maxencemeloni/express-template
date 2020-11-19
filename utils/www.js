@@ -1,4 +1,8 @@
 const logger = require('../library/logger')
+/**
+ *
+ * @param error
+ */
 exports.onError = (error) => {
     /** @namespace error.syscall */
     if (error.syscall !== 'listen') {

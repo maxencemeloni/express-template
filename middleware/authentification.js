@@ -1,5 +1,12 @@
 const JWT = require('../library/JWT');
 const logger = require('../library/logger');
+/**
+ *
+ * @param req
+ * @param res
+ * @param next
+ * @returns {this}
+ */
 exports.isAllowed = (req, res, next) => {
     let token = req.headers.token;
     if (token !== undefined) {
