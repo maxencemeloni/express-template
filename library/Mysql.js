@@ -11,51 +11,60 @@ class Mysql {
         this.fields = fields.join(',');
     }
 
+    query(...args) {
+        return new Promise((resolve, reject) => {
+           this.db.query(...args, (err, results) => {
+              if (err) {
+                  reject(err);
+              } else {
+                  resolve(results);
+              }
+           });
+        });
+    }
+
     /**
      *
      * @param data
      * @param next
      * @returns {Promise<void>}
      */
-    create(data = {}, next) {
-        this.db.query(`INSERT INTO ${this.table} SET ?`, data, next);
+    async create(data = {}, next) {
+        return this.query(`INSERT INTO ${this.table} SET ?`, data, next);
     }
 
     /**
      *
-     * @param where
+     * @param wheres
      * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10 (0 = offset, 10 = limit)
-     * @param next
      * @returns {Promise<void>}
      */
-    read(wheres = {}, limits = [],next) {
+    async read(wheres = {}, limits = []) {
         let limit = this.buildLimits(limits);
         let where = this.buildWhere(wheres);
-        this.db.query(`SELECT ${this.fields} FROM ${this.table} ${where} ${limit}`, where, next);
+        return this.query(`SELECT ${this.fields} FROM ${this.table} ${where} ${limit}`, where);
     }
 
     /**
      *
-     * @param where
+     * @param wheres
      * @param data
-     * @param next
      * @returns {Promise<void>}
      */
-    update(wheres = {}, data = {}, next) {
+    async update(wheres = {}, data = {}) {
         let where = this.buildWhere(wheres);
-        this.db.query(`UPDATE ${this.table} SET ? ${where} ?`, [data, where], next);
+        return this.query(`UPDATE ${this.table} SET ? ${where} ?`, [data, where]);
     }
 
     /**
      *
-     * @param where
+     * @param wheres
      * @param data
-     * @param next
      * @returns {Promise<void>}
      */
-    delete(wheres = {}, data = {}, next) {
+    async delete(wheres = {}, data = {}) {
         let where = this.buildWhere(wheres);
-        this.db.query(`DELETE FROM ${this.table} ${where} ?`, where, next);
+        return this.query(`DELETE FROM ${this.table} ${where} ?`, where);
     }
 
     /**
