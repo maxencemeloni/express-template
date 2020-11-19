@@ -59,15 +59,15 @@ class Mysql {
     }
 
     /**
-     *
+     * TODO: improve this method
      * @param where
      * @returns {string}
      */
     buildWhere = where => {
         let WHERE = '';
         if (where.length > 0) {
-            WHERE += 'WHERE ';
-            where.forEach(elem => {});
+            WHERE += 'WHERE ?';
+            //where.forEach(elem => {});
         }
         return WHERE;
     }
