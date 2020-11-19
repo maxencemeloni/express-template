@@ -24,7 +24,7 @@ class Mysql {
     /**
      *
      * @param where
-     * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10
+     * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10 (0 = offset, 10 = limit)
      * @param next
      * @returns {Promise<void>}
      */
@@ -74,12 +74,15 @@ class Mysql {
 
     /**
      *
-     * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10
+     * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10 (0 = offset, 10 = limit)
      * @returns {string}
      */
     buildLimits = (limits = []) => {
         let limit = '';
         if (limits.length > 0) {
+            if (limits.length > 1) {
+                limits = limits[0].split(',');
+            }
             limit = 'LIMIT ' + parseInt(limits[0]);
             if (limits[1] !== undefined) {
                 limit += ',' + parseInt(limits[1]);
