@@ -113,6 +113,8 @@ this is a simple authentication method.
 
 ./middleware/authentication.js
 
+**DEFINE A REAL ENCRYPTED FOR THE SIGN (.env JWT_KEY)**
+
 **set (in controller):**
 ```javascript
 const JWT = require('../library/JWT');
@@ -137,9 +139,56 @@ to improve it, define a lvl politic on roles ex:
 
 set the lvl in the payload and check if the lvl of the user is less or equal than the lvl allowed
 
+
 ## mysql
 ### basic (branch "mysql")
 ./library/Mysql.js
+
+create a new model (you duplicate users.model.js)
+```javascript
+const Mysql = require('../library/Mysql');
+const db = require('../datasources/mysql');
+const table = 'my_table';
+const fields = ['id', 'title', 'created_at'];
+class MyModel extends Mysql {
+    constructor(db, table, fields) {
+        super(db, table, fields);   
+    }
+
+    //add custom methods below
+}
+
+module.exports = new MyModel(db, table, fields);
+```
+You will now have access to Mysql class methods :
+```javascript
+const MyModel = require('../models/my-model.model');
+MyModel.create(); 
+MyModel.read();
+MyModel.update();
+MyModel.delete();
+```
+
+
+and custom methods if you add them in the model
+
+#### Usage examples :
+**Mysql.create**
+```javascript
+const MyModel = require('../models/my-model.model');
+let data = {title: 'title', ...};
+MyModel.create(data, (err, results) => {});
+
+let where = {id: 1};
+MyModel.read(where, limits,(err, results) => {});
+
+let where = {id: 1};
+let data = {title: 'new title', other_field: 'blabla'}
+MyModel.update(where, data, (err, results) => {});
+
+let where = {id: 1};
+MyModel.delete(where, (err, results) => {});
+```
 
 
 ### async (branch "mysql-async")
