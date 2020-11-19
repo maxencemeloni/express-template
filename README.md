@@ -56,9 +56,9 @@ mysql-socketio  | Datasource Mysql and Socket.io |
 
 **Flow reminder :**
 
-> route &rarr; controller (req) &rarr; model &rarr; controller (res);
+> client(req) &rarr; route &rarr; middleware &rarr; controller (req) &rarr; model &rarr; controller (res) &rarr; client;
 
-> route &rarr; controller (req) &rarr; service &rarr; controller (res);
+> client(req) &rarr; route &rarr; middleware &rarr; controller (req) &rarr; service &rarr; controller (res) &rarr; client;
 
 ## Functionalities
 
@@ -105,11 +105,39 @@ or
     **200** is the number of line to display (log history);
     
 ## json web token
+[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+
 ./library/JWT.js
+
+./middleware/authentication.js
+
+**set (in controller):**
+```javascript
+const JWT = require('../library/JWT');
+...
+let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+JWT.set(user, ip);
+...
+```
+
+**check (middleware on a route):**
+```javascript
+const {isAllowed} = require('../middlewares/authentication');
+...
+.get('/protectedRoute', isAllowed, COntroller.method);
+...
+```
 
 
 ## mysql
+### basic (branch "mysql")
 ./library/Mysql.js
+
+
+### async (branch "mysql-async")
+./library/Mysql.js
+
+### typetron (branch "mysql-typetron")
 
 ## logger
 ./library/logger.js
@@ -130,19 +158,6 @@ or
 [TOCM]
 
 [TOC]
-
-#H1 header
-##H2 header
-###H3 header
-####H4 header
-#####H5 header
-######H6 header
-#Heading 1 link [Heading link](https://github.com/pandao/editor.md "Heading link")
-##Heading 2 link [Heading link](https://github.com/pandao/editor.md "Heading link")
-###Heading 3 link [Heading link](https://github.com/pandao/editor.md "Heading link")
-####Heading 4 link [Heading link](https://github.com/pandao/editor.md "Heading link") Heading link [Heading link](https://github.com/pandao/editor.md "Heading link")
-#####Heading 5 link [Heading link](https://github.com/pandao/editor.md "Heading link")
-######Heading 6 link [Heading link](https://github.com/pandao/editor.md "Heading link")
 
 ##Headers (Underline)
 
