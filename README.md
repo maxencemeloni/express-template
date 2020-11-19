@@ -54,7 +54,13 @@ mysql-socketio  | Datasource Mysql and Socket.io |
 - **.env.example**: dont forget to duplicate this (.env)) 
 - **pm2.json**: pm2 file to fill
 
-## Functionalities guide
+**Flow reminder :**
+
+> route &rarr; controller (req) &rarr; model &rarr; controller (res);
+
+> route &rarr; controller (req) &rarr; service &rarr; controller (res);
+
+## Functionalities
 
 ### pm2
 [PM2 documentation](https://pm2.keymetrics.io/)
@@ -310,6 +316,6 @@ Content Cell  | Content Cell
     - [ ] GFM task list 4-2
 
     
--------------
-#Changelog
 <a name="changelog"></a>
+# Changelog
+
