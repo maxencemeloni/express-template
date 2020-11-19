@@ -39,3 +39,21 @@ app.use('/', indexRoutes);
 app.use('/time', timeRoutes);
 
 module.exports = app;
+
+// TODO: add a routes autoloader
+/*const fs = require("fs");
+const routePath = "./routers/";
+fs.readdirSync(routePath).forEach(file => {
+    const route = routePath + file;
+    require(route)(app);
+});
+module.exports=function(app){
+    app.get('/',function(req,res){
+        res.send('/ called successfully...');
+    });
+}
+or
+https://gist.github.com/ybrodsky/e54792b17b89dc85a5c6acea4d58e077
+or
+https://www.npmjs.com/package/express-load-routes
+*/
