@@ -4,7 +4,7 @@ const packageJson = require('../package.json');
 const config = require('config');
 const DailyRotateFile = require('winston-daily-rotate-file');
 const logDir = './logs';
-
+// TODO : config lvl
 const options = {
     file: {
         level: (config.has('log.level')) ? config.get('log.level') : 'info',
