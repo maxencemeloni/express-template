@@ -32,11 +32,8 @@ app.use(express.static('public'));
 
 app.use(morgan('tiny', {stream: logger.stream}));
 
-const indexRoutes = require('./routes/index.route.js');
-const timeRoutes = require('./routes/time.route.js');
 
-app.use('/', indexRoutes);
-app.use('/time', timeRoutes);
+require('./library/router.js')(app);
 
 
 module.exports = app;

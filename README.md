@@ -23,7 +23,7 @@ mysql-socketio  | Datasource Mysql and Socket.io |
 
 **- Logging :** [Morgan](https://www.npmjs.com/package/morgan) + [Winston](https://www.npmjs.com/package/winston)
 
-**- Auto-loaded Routes**
+**- Auto-loaded Routes :** [express-load-route](https://www.npmjs.com/package/express-load-routes)
 
 **- [JWT](https://www.npmjs.com/package/jsonwebtoken) authentification**
 

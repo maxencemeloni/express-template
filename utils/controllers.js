@@ -10,7 +10,7 @@ exports.sendResponse = (res, err, results) => {
         logger.error(err);
         res.sendStatus(500);
     } else {
-        if (results.insertedRows > 0) {
+        if (results !== undefined && results.insertedRows !== undefined && results.insertedRows > 0) {
             res.sendStatus(201);
         } else {
             res.send(results);

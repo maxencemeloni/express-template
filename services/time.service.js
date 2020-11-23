@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const logger = require('../library/logger');
 const {buildUrl} = require('../utils/services');
-
+// TODO make it work
 class Time {
     static get(timeZone, next) {
         const uri = '/api/json/' + timeZone + '/now';
