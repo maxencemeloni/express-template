@@ -5,10 +5,10 @@ const {generatePassword} = require('../utils/users');
 const {validationResult} = require('express-validator');
 
 class UsersController {
-    async static find(req, res) {
+    static async find(req, res) {
         let limits = buildLimit(req, 10);
         try {
-            let result = Users.read({}, limits);
+            let result = await Users.read({}, limits);
             res.send(result);
         } catch(err) {
             logger.error(err);
@@ -16,9 +16,9 @@ class UsersController {
         }
     }
 
-    async static findOne(req, res) {
+    static async findOne(req, res) {
         try {
-            let result = Users.read({id: req.params.id}, [1]);
+            let result = await Users.read({id: req.params.id}, [1]);
             res.send(result);
         } catch(err) {
             logger.error(err);
@@ -26,7 +26,7 @@ class UsersController {
         }
     }
 
-    async static createOne(req, res) {
+    static async createOne(req, res) {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
@@ -45,7 +45,7 @@ class UsersController {
         }
     }
 
-    async static updateOne(req, res) {
+    static async updateOne(req, res) {
         let data = req.body;
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
@@ -69,7 +69,7 @@ class UsersController {
         }
     }
 
-    async static deleteOne(req, res) {
+    static async deleteOne(req, res) {
         // you have enough examples and i'm lazy ;)
     }
 }
