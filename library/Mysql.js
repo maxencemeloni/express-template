@@ -79,14 +79,8 @@ class Mysql {
      */
     buildLimits = (limits = []) => {
         let limit = '';
-        if (limits.length > 0) {
-            if (limits.length > 1) {
-                limits = limits[0].split(',');
-            }
-            limit = 'LIMIT ' + parseInt(limits[0]);
-            if (limits[1] !== undefined) {
-                limit += ',' + parseInt(limits[1]);
-            }
+        if (limits !== '') {
+            limit = 'LIMIT ' + limits;
         }
         return limit;
     }
