@@ -6,6 +6,12 @@ const {validationResult} = require('express-validator');
 
 class UsersController {
     static async find(req, res) {
+        // /users?limit=10
+        // /users?offset=50
+        // /users?limit=10&offset=50
+        // ******************
+        // warning : the default limit is 10
+        // see => /utils/controllers.js
         let limits = buildLimit(req, 10);
         try {
             let result = await Users.read({}, limits);
@@ -16,7 +22,7 @@ class UsersController {
         }
     }
 
-    static async findOne(req, res) {
+    static async findById(req, res) {
         try {
             let result = await Users.read({id: req.params.id}, [1]);
             res.send(result);
@@ -71,6 +77,8 @@ class UsersController {
 
     static async deleteOne(req, res) {
         // you have enough examples and i'm lazy ;)
+        // in fact, i've not implement this method because it depend about your deletion policy
+        // you can update and set a field as disabled_at or is_active OR delete the row
     }
 }
 

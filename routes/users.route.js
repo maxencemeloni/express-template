@@ -4,7 +4,7 @@ const UsersController = require('../controllers/users.controller');
 const {body} = require('express-validator');
 router
     .get('/', UsersController.find)
-    .get('/:id', UsersController.findOne)
+    .get('/:id', UsersController.findById)
     .post('/', [
         body('email').isEmail(),
         body('password').isLength({min: 8})
