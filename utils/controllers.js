@@ -17,19 +17,17 @@ exports.sendResponse = (res, err, results) => {
         }
     }
 }
-
 /**
- * TODO return a string ready to be used in the query
- * @param req
- * @param defaultLimit
- * @returns {[number|string|string]}
- */
+/* @param req
+/* @param defaultLimit
+/* @returns {string}
+*/
 exports.buildLimit = (req, defaultLimit = 10) => {
-    let limit = req.query.limit || defaultLimit;
-    let offset = req.query.offset || null;
-    let limits = [limit];
+    let offset = parseInt(req.query.offset) || null;
+    let limits = '';
     if (offset !== null) {
-        limits.push(offset)
+        limits += offset + ',';
     }
+    limits += parseInt(req.query.limit) || defaultLimit;
     return limits;
 }
