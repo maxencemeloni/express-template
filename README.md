@@ -9,9 +9,9 @@ This is a ready to Use **Express API**
 Branch  | Description | Status
 ------------- | ------------- | -------------
 main  | Full api without datasource | 
-mysql  | Datasource Mysql, simple code | Online
+mysql  | Datasource Mysql, simple code | **Online**
 mysql+typetron  | Datasource Mysql + Typetron (ORM) | 
-mysql-async  | Datasource mysql with async/await | 
+mysql-async  | Datasource mysql with async/await | **Online**
 mongo  | Datasource MongoDb | 
 mongo-mysql  | Example with 2 differents datasources | 
 mongo-socketio  | Datasource MongoDb and Socket.io | 
