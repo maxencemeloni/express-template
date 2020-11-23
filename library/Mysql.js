@@ -29,8 +29,8 @@ class Mysql {
      * @param next
      * @returns {Promise<void>}
      */
-    async create(data = {}, next) {
-        return this.query(`INSERT INTO ${this.table} SET ?`, data, next);
+    async create(data = {}) {
+        return this.query(`INSERT INTO ${this.table} SET ?`, data);
     }
 
     /**
