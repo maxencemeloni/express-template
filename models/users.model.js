@@ -11,5 +11,9 @@ class Users extends Mysql {
         super(...args);
     }
     // Add custom methods below
+    async getByEmail(email) {
+        return this.db.query(`SELECT ${this.fields} FROM ${table} WHERE email=?`, email);
+    }
 }
+
 module.exports = new Users(db, table, fields);
