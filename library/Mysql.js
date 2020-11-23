@@ -73,11 +73,10 @@ class Mysql {
     }
 
     /**
-     * TODO: uselss, build a string from utils/controllers/buildLimit 1 | '0,1'
      * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10 (0 = offset, 10 = limit)
      * @returns {string}
      */
-    buildLimits = (limits = []) => {
+    buildLimits = (limits = '') => {
         let limit = '';
         if (limits !== '') {
             limit = 'LIMIT ' + limits;
