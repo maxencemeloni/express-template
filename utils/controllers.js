@@ -18,9 +18,9 @@ exports.sendResponse = (res, err, results) => {
     }
 }
 /**
-* @param req
-* @param defaultLimit
-* @returns {int|string}
+/* @param req
+/* @param defaultLimit
+/* @returns {string}
 */
 exports.buildLimit = (req, defaultLimit = 10) => {
     let offset = parseInt(req.query.offset) || null;
