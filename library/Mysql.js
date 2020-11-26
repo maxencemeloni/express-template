@@ -11,6 +11,7 @@ class Mysql {
         this.fields = fields.join(',');
     }
 
+
     /**
      *
      * @param data
@@ -73,7 +74,7 @@ class Mysql {
     }
 
     /**
-     * @param limits ex: [10] => LIMIT 10 - [0,10] => LIMIT 0,10 (0 = offset, 10 = limit)
+     * @param limits
      * @returns {string}
      */
     buildLimits = (limits = '') => {
