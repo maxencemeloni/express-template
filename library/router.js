@@ -20,23 +20,44 @@
  *
  ***/
 'use strict';
-const fs = require('fs-readdir-recursive');
+const fs = require('fs');
 const path = require('path');
-// TODO rewrite with recursive shit
-module.exports = function (app, options) {
+module.exports = function (app, options = {}) {
+    console.log(__dirname);
     let defaults = {
-        dir: __dirname + '/../routes',
+        dir: 'routes',
         path: '/'
     };
     options = options || {};
     const params = Object.assign(defaults, options);
-    fs
-        .readdirSync(params.dir)
-        .filter(file => {
-            return (file.indexOf('.') !== 0) && (file.slice(-3) === '.js');
-        })
-        .forEach(file => {
-            const route = require(params.dir + '/' + file);
-            app.use(file === 'index.js' ? '/' : defaults.path + file.slice(0, -3), route);
-        });
+    let fullPath = __dirname + '/../' + params.dir
+    findInDir(fullPath, /\.js$/).forEach(file => {
+        file = file.replace(params.dir + '/', '').slice(0, -3);
+        let routeFile = require(fullPath + '/' + file);
+        let route = file.replace('index', '');
+        app.use(params.path + route, routeFile);
+    });
 };
+/**
+ *
+ * @param dir
+ * @param filter regex (ex: /\.js$/)
+ * @param fileList
+ * @returns {*[]}
+ */
+function findInDir(dir, filter, fileList = []) {
+    const files = fs.readdirSync(dir);
+    files.forEach((file) => {
+        const filePath = path.join(dir, file);
+        const fileStat = fs.lstatSync(filePath);
+        if (fileStat.isDirectory()) {
+            findInDir(filePath, filter, fileList);
+        } else if (filter.test(filePath)) {
+            let file = path
+                .relative(process.cwd(), filePath)
+                .replace(/\\/g, '/')// if windows...
+            fileList.push(file);
+        }
+    });
+    return fileList;
+}

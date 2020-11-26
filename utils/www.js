@@ -1,4 +1,5 @@
 const logger = require('../library/logger')
+const API_PORT = parseInt(process.env.API_PORT) || 3000;
 /**
  *
  * @param error
