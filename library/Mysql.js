@@ -53,7 +53,7 @@ class Mysql {
      */
     async update(wheres = {}, data = {}) {
         let where = this.buildWhere(wheres);
-        return this.query(`UPDATE ${this.table} SET ? ${where} ?`, [data, where]);
+        return this.query(`UPDATE ${this.table} SET ? ${where}`, [data, where]);
     }
 
     /**
