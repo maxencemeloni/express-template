@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 module.exports = function (app, options = {}) {
-    console.log(__dirname);
     let defaults = {
         dir: 'routes',
         path: '/'
